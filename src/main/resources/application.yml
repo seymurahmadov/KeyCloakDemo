@@ -1,0 +1,51 @@
+#spring.application.name=KeyClockTest
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: my-client-dash-id
+            client-secret: my-client-dash
+            scope: openid
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8081/oauth2/callback/my-client" # Yönlendirme URI'si
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/auth
+            token-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/token
+            user-info-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/userinfo
+
+
+## Keycloak Configuration
+#keycloak.realm=myrealm
+#keycloak.auth-server-url=http://localhost:8080/auth
+#keycloak.resource=my-client-dash-id
+#keycloak.credentials.secret=my-client-dash
+#keycloak.bearer-only=true
+#keycloak.ssl-required=external
+#keycloak.use-resource-role-mappings=true
+#
+## Spring Security with OAuth2 and Keycloak integration
+#spring.security.oauth2.client.provider.keycloak.issuer-uri=http://localhost:8080/auth/realms/myrealm
+#spring.security.oauth2.client.registration.keycloak.client-id=my-client-dash-id
+#spring.security.oauth2.client.registration.keycloak.client-secret=my-client-dash
+#spring.security.oauth2.client.registration.keycloak.authorization-grant-type=authorization_code
+#spring.security.oauth2.client.registration.keycloak.redirect-uri={baseUrl}/login/oauth2/code/keycloak
+#
+## Database Configuration
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.hibernate.show-sql=true
+#spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+#spring.datasource.username=postgres
+#spring.datasource.password=12345
+#
+## Server Configuration
+#server.port=8082
+#
+#
+#logging.level.org.springframework.security=DEBUG
+#logging.level.org.keycloak=DEBUG
+server:
+  port: 8082
